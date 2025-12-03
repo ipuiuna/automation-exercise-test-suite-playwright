@@ -8,6 +8,7 @@ export class HomePage {
   readonly sliderBanner: Locator;
   readonly sliderItems: Locator;
   readonly productsButton: Locator;
+  readonly cartButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -19,6 +20,7 @@ export class HomePage {
       '#slider-carousel .carousel-inner .item'
     );
     this.productsButton = this.page.getByRole('link', { name: 'Products' });
+    this.cartButton = this.page.getByRole('link', { name: ' Cart' });
   }
 
   async goto() {
@@ -28,5 +30,10 @@ export class HomePage {
   async gotoProductsPage() {
     await this.productsButton.click();
     await this.page.waitForURL('**/products');
+  }
+
+  async gotoCartPage() {
+    await this.cartButton.click();
+    await this.page.waitForURL('**/view_cart');
   }
 }
