@@ -1,4 +1,4 @@
-import { type Locator, type Page } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class ContactPage {
   readonly page: Page;
@@ -25,5 +25,21 @@ export class ContactPage {
 
   async goto() {
     await this.page.goto('/contact_us');
+  }
+
+  async expectAllFieldsVisibleAndEditable() {
+    const fields = [
+      this.nameField,
+      this.email,
+      this.subject,
+      this.message,
+      this.uploadFileInput,
+      this.submitButton,
+    ];
+
+    for (const field of fields) {
+      await expect(field).toBeVisible();
+      await expect(field).toBeEnabled();
+    }
   }
 }
