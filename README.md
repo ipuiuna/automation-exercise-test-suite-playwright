@@ -34,3 +34,14 @@ Feature: Home page navigation and layout
     When the user clicks the "Contact Us" link
     Then the contact form page should be displayed
 ```
+
+## 🚀 How to Run the Tests
+
+Follow the steps below to install dependencies, configure Playwright, and execute the test suite.
+
+### 1. Install project dependencies
+
+```bash
+npm install
+npx playwright install --with-deps
+npx playwright test
