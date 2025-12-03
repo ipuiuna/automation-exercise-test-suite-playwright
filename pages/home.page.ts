@@ -9,6 +9,7 @@ export class HomePage {
   readonly sliderItems: Locator;
   readonly productsButton: Locator;
   readonly cartButton: Locator;
+  readonly contactButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -21,6 +22,7 @@ export class HomePage {
     );
     this.productsButton = this.page.getByRole('link', { name: 'Products' });
     this.cartButton = this.page.getByRole('link', { name: ' Cart' });
+    this.contactButton = this.page.getByRole('link', { name: ' Contact us' });
   }
 
   async goto() {
@@ -35,5 +37,10 @@ export class HomePage {
   async gotoCartPage() {
     await this.cartButton.click();
     await this.page.waitForURL('**/view_cart');
+  }
+
+  async gotoContactPage() {
+    await this.contactButton.click();
+    await this.page.waitForURL('**/contact_us');
   }
 }
