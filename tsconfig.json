@@ -3,7 +3,8 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@pages/*": ["pages/*"]
+      "@pages/*": ["pages/*"],
+      "@fixtures/*": ["fixtures/*"]
     }
   }
 }

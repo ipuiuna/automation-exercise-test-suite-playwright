@@ -35,7 +35,7 @@ export class HomePage {
   }
 
   async gotoCartPage() {
-    await this.contactButton.click();
+    await this.cartButton.click();
     await this.page.waitForURL('**/view_cart');
   }
 

@@ -1,13 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '@pages/home.page';
-import { ProductPage } from '@pages/product.page';
-import { CartPage } from '@pages/cart.page';
-import { ContactPage } from '@pages/contact.page';
+import { test, expect } from '@fixtures/base.fixture';
 
 test.describe('Home page navigation and layout', () => {
-  test('TC01 - Home page loads successfully', async ({ page }) => {
-    const homePage = new HomePage(page);
-    await homePage.goto();
+  test('TC01 - Home page loads successfully', async ({ homePage }) => {
     await expect(homePage.header).toBeVisible();
     await expect(homePage.activeMenuItem).toHaveCount(1);
     await expect(homePage.activeMenuItem.first()).toHaveText('Home');
@@ -17,34 +11,27 @@ test.describe('Home page navigation and layout', () => {
   });
 
   test('TC02 - Navigate to Products page from the top menu', async ({
-    page,
+    homePage,
+    productsPage,
   }) => {
-    const homePage = new HomePage(page);
-    const productsPage = new ProductPage(page);
-    await homePage.goto();
     await homePage.gotoProductsPage();
-    await expect(page).toHaveURL(/.*\/products/);
     await expect(productsPage.title).toHaveText('All Products');
     await expect(productsPage.productCards).toHaveCount(34);
   });
 
-  test('TC03 - Navigate to Cart page from the top menu', async ({ page }) => {
-    const homePage = new HomePage(page);
-    const cartPage = new CartPage(page);
-    await homePage.goto();
+  test('TC03 - Navigate to Cart page from the top menu', async ({
+    homePage,
+    cartPage,
+  }) => {
     await homePage.gotoCartPage();
-    await expect(page).toHaveURL(/.*\/view_cart/);
     await expect(cartPage.emptyCartMessage).toBeVisible();
   });
 
   test('TC04 - Navigate to Contact Us page from the top menu', async ({
-    page,
+    homePage,
+    contactPage,
   }) => {
-    const homePage = new HomePage(page);
-    const contactPage = new ContactPage(page);
-    await homePage.goto();
     await homePage.gotoContactPage();
-    await expect(page).toHaveURL(/.*\/contact_us/);
     await expect(contactPage.title).toContainText('Contact Us');
     await contactPage.expectAllFieldsVisibleAndEditable();
   });
