@@ -1,4 +1,3 @@
-// fixtures/base.fixture.ts
 import { test as base } from '@playwright/test';
 import { HomePage } from '@pages/home.page';
 import { ProductPage } from '@pages/product.page';
