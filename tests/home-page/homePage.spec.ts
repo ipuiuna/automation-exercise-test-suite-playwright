@@ -9,5 +9,7 @@ test.describe('Home page navigation and layout', () => {
     await expect(homePage.activeMenuItem).toHaveCount(1);
     await expect(homePage.activeMenuItem.first()).toHaveText('Home');
     await expect(homePage.menuItems).toHaveCount(8);
+    await expect(homePage.sliderBanner).toBeVisible();
+    await expect(homePage.sliderItems).toHaveCount(3);
   });
 });
