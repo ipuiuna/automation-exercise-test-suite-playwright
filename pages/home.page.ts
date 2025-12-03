@@ -7,6 +7,7 @@ export class HomePage {
   readonly menuItems: Locator;
   readonly sliderBanner: Locator;
   readonly sliderItems: Locator;
+  readonly productsButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -17,9 +18,15 @@ export class HomePage {
     this.sliderItems = this.page.locator(
       '#slider-carousel .carousel-inner .item'
     );
+    this.productsButton = this.page.getByRole('link', { name: 'Products' });
   }
 
   async goto() {
     await this.page.goto('/');
+  }
+
+  async gotoProductsPage() {
+    await this.productsButton.click();
+    await this.page.waitForURL('**/products');
   }
 }
