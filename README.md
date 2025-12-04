@@ -3,13 +3,15 @@
 ## 🧪 Feature: Home Page
 
 ### 🎯 Description
+
 Basic functions of the home page
 
 ---
 
 ### 📌 Scenarios
 
-#### ✅ Scenario: <Scenario Name>
+#### ✅ Home Page: <Scenario Name>
+
 ```gherkin
 Feature: Home page navigation and layout
 
@@ -45,3 +47,4 @@ Follow the steps below to install dependencies, configure Playwright, and execut
 npm install
 npx playwright install --with-deps
 npx playwright test
+```
