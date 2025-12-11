@@ -18,7 +18,7 @@ test.describe('Home page navigation and layout', () => {
     );
   });
 
-  test('TC02 - Navigate to Products page from the top menu', async ({
+  test('TC02/TC05 - Navigate to Products page from the top menu', async ({
     homePage,
     productsPage,
   }, testInfo) => {

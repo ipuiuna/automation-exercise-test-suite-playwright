@@ -1,12 +1,12 @@
 import { test as base } from '@playwright/test';
 import { HomePage } from '@pages/home.page';
-import { ProductPage } from '@pages/product.page';
+import { ProductsListPage } from '@pages/products-list.page';
 import { CartPage } from '@pages/cart.page';
 import { ContactPage } from '@pages/contact.page';
 
 type NavigationFixtures = {
   homePage: HomePage;
-  productsPage: ProductPage;
+  productsPage: ProductsListPage;
   cartPage: CartPage;
   contactPage: ContactPage;
 };
@@ -20,7 +20,7 @@ export const test = base.extend<NavigationFixtures>({
   },
 
   productsPage: async ({ homePage }, use) => {
-    const productsPage = new ProductPage(homePage.page);
+    const productsPage = new ProductsListPage(homePage.page);
     await homePage.gotoProductsPage();
     await use(productsPage);
   },
